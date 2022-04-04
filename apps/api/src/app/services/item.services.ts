@@ -1,17 +1,21 @@
 import { apiUrl } from "../../environments/environment";
-import { httpGet } from "../utils";
+import { HttpRequestI } from "../interfaces";
 
 export class ItemService{
-    
-    get = async({query = '', limit = '10', skip = 0}) => 
-        httpGet(
+    private http: HttpRequestI
+    constructor(private httpRequest: HttpRequestI){
+        this.http = httpRequest
+    }
+
+    get = async({query = '', limit = 10, skip = 0}) => 
+        this.http.get(
             `${apiUrl.search}?q=${query}&limit=${limit}&skip=${skip}`
         );
    
-    getById = async(id: string) => httpGet(`${apiUrl.items}/${id}`);
+    getById = async(id: string) => this.http.get(`${apiUrl.items}/${id}`);
 
     getByIdDescription = async(id: string) => 
-        httpGet(
+        this.http.get(
             `${apiUrl.items}/${id}/description`
         );
 

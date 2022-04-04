@@ -218,6 +218,7 @@ export interface ItemI {
     accepts_mercadopago: boolean;
     installments: Installments;
     address: Address;
+    pictures: any[];
     shipping: Shipping;
     seller_address: SellerAddress;
     attributes: Attribute[];

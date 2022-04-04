@@ -1,14 +1,16 @@
 import { Request, Response } from "express";
 import { authorObject } from "../../environments/environment";
+import { HttpRequestI, ItemI } from "../interfaces";
 import { CategoryService, ItemService } from "../services";
 
 export class ItemController{
+    private author = authorObject;
     private itemService: ItemService;
     private categoryService: CategoryService;
 
-    constructor(){
-        this.itemService = new ItemService();
-        this.categoryService = new CategoryService();
+    constructor(httpRequest: HttpRequestI){
+        this.itemService = new ItemService(httpRequest);
+        this.categoryService = new CategoryService(httpRequest);
     }
 
     /**
@@ -19,9 +21,7 @@ export class ItemController{
     get = async(req: Request, res: Response) => {
         try{
             const query = req.query?.q as string
-
             const itemRes = await this.itemService.get({query});
-            
             const items = itemRes.results.map(item => ({
                 id: item.id,
                 title: item.title,
@@ -35,16 +35,14 @@ export class ItemController{
                 free_shippin: item.shipping.free_shipping,
                 location: item.address.state_name,
             })) 
-
             const categories = await this.categoryService.formatCategory(itemRes);
-
-            res.send({
-                author: authorObject,
+            res.json({
+                author: this.author,
                 items,
                 categories
             })
         }catch(err){
-            res.status(err.status).send(err)
+            res.status(err.status).json(err)
         }
     }
 
@@ -60,30 +58,27 @@ export class ItemController{
                 this.itemService.getById(id),
                 this.itemService.getByIdDescription(id)
             ])
-
-            const itemDetail = itemDetailRes[0]
-
+            const itemDetail: ItemI | any = itemDetailRes[0]
             const item = {
                 id: itemDetail.id,
                 title: itemDetail.title,
                 price: {
                     currency: itemDetail.currency_id,
                     amount: itemDetail.price,
-                    decimals: '',
+                    decimals: 0,
                 },
-                picture: itemDetail.thumbnail,
+                picture: itemDetail.pictures[0].secure_url,
                 condition: itemDetail.condition,
                 free_shipping: itemDetail.shipping.free_shipping,
                 sold_quantity: itemDetail.sold_quantity,
                 description: itemDetailRes[1].plain_text
             }
-
-            res.send({
-                author: authorObject,
+            res.json({
+                author: this.author,
                 item
             })
         }catch(err){
-            res.status(err.status).send(err)
+            res.status(err.status).json(err)
         }
     }
     

@@ -1,10 +1,5 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
 import * as express from 'express';
-import * as cors from "cors";
+import * as cors from 'cors';
 import indexRouter from './app/routes/index.routes';
 
 const app = express();
@@ -27,4 +22,6 @@ const server = app.listen(port, () => {
 });
 
 server.on('error', console.error);
+
+export  {app, server};
 

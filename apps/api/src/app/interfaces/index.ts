@@ -1,2 +1,3 @@
 export * from './item.interface'
-export * from './itemSearch.iterface'
+export * from './item-search.iterface'
+export * from './http-request.interface'
