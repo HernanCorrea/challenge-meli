@@ -7,14 +7,20 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
+import { LayoutModule } from './shared/layout/layout.module';
+import { ITEM_STATE_NAME } from './core/store/item/item.state';
+import { ItemReducer } from './core/store/item/item.reducer';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
+    HttpClientModule,
+    LayoutModule,
     StoreModule.forRoot(
-      {},
+      {[ITEM_STATE_NAME]: ItemReducer},
       {
         metaReducers: !environment.production ? [] : [],
         runtimeChecks: {

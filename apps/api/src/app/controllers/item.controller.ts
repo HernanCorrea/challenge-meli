@@ -58,7 +58,7 @@ export class ItemController{
                 this.itemService.getById(id),
                 this.itemService.getByIdDescription(id)
             ])
-            const itemDetail: ItemI | any = itemDetailRes[0]
+            const itemDetail: ItemI = itemDetailRes[0]
             const item = {
                 id: itemDetail.id,
                 title: itemDetail.title,

@@ -1,15 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../core/store/app.state';
+import { getItemList } from '../../core/store/item/item.selectors';
 
 @Component({
-  selector: 'challengenrwl-list',
+  selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit {
+export class ListComponent  {
 
-  constructor() { }
+  constructor(private store: Store<AppState>,
+              private route: Router) { }
 
-  ngOnInit(): void {
+  itemList$ = this.store.select(getItemList);
+
+  onSelect(idItem: string){
+    this.route.navigate(['/detail', idItem]);
   }
-
 }

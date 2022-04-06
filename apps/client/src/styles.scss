@@ -1,1 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+// import directories
+@import './assets/styles/3-helpers/helpers-dir';
+@import './assets/styles/0-base/base-dir';
+@import './assets/styles/1-page/page-dir';
+@import './assets/styles/2-modules/modules-dir';

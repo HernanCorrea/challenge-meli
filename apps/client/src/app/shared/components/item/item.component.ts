@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'challengenrwl-item',
+  selector: 'app-item',
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss']
 })
-export class ItemComponent implements OnInit {
+export class ItemComponent  {
 
-  constructor() { }
+  @Input() item: any;
+  @Output() selectItem = new EventEmitter();
 
-  ngOnInit(): void {
+  onSelect(item: any) {
+    this.selectItem.emit(item);
   }
-
 }

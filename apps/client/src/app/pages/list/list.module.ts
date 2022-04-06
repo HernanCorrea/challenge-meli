@@ -6,10 +6,14 @@ const routes: Routes = [
   { path: '', component: ListComponent},
 ];
 @NgModule({
-  declarations: [ListComponent],
+  declarations: [
+    // ListComponent
+  ],
   imports: [
     RouterModule.forChild(routes)
   ],
-  exports: [ListComponent]
+  exports: [
+    // ListComponent
+  ]
 })
 export class ListModule {}

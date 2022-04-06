@@ -36,6 +36,20 @@ describe('GET /api/items/:id', () => {
   });
 });
 
+describe('GET On Fail', () => {
+  test("Should return error", async () => {
+    const res = await requestWithSupertest.get('/api/testing');
+    expect(res.status).toEqual(404);
+  })
+  
+  test("Should exist api", async () => {
+    const res = await requestWithSupertest.get('/api');
+    expect(res.status).toEqual(200);
+    expect(res.text).toContain("It works");
+  })
+
+})
+
 afterAll(() => {
   server.close();
 });

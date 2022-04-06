@@ -7,4 +7,4 @@ import { ItemComponent } from './item.component';
   imports: [],
   exports: [ItemComponent]
 })
-export class SearchFieldModule {}
+export class ItemModule {}
