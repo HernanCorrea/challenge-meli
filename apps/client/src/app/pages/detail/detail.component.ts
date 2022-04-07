@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SeoService } from '../../core/services/seo.service';
 
 @Component({
   selector: 'app-detail',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailComponent implements OnInit {
 
-  constructor() { }
+  constructor(private seoService: SeoService) { }
 
   ngOnInit(): void {
+    this.seoService.setCanonicalURL();
+    this.seoService.setTitle('Detalle de producto');
+    this.seoService.setDescription('Obtener productos de la API de Mercado Libre');
+    this.seoService.setKeywords(['Mercadolibre', 'Productos', 'Compras', 'Ventas', 'Stock', 'MercadoPago']);
   }
 
 }

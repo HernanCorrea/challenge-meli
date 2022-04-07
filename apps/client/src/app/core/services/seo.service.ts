@@ -1,34 +1,48 @@
-import { Injectable } from '@angular/core';
-import { Title, Meta } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
+import { Inject, Injectable } from '@angular/core';
+import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SeoService {
-  private titleBase = `Angular Universal (work)shop - `;
+  private titleBase = `MeliChallenge - `;
 
-  constructor(private title: Title, private meta: Meta) {}
+  constructor(
+    private title: Title,
+    private meta: Meta,
+    @Inject(DOCUMENT) private dom: Document
+  ) {}
 
-  public setTitle(titlePart: string): void {
+  setTitle(titlePart: string): void {
     this.title.setTitle(this.titleBase + titlePart);
   }
-
-  public setDescription(description: string): void {
+  setDescription(description: string): void {
     this.meta.updateTag(
       { name: 'description', content: description },
       'name=description'
     );
   }
 
-  public setKeywords(keywords: string[]): void {
+  setKeywords(keywords: string[]): void {
     this.meta.updateTag(
       {
         name: 'keywords',
-        content: keywords.reduce(
-          (prev, curr) => (prev += `, ${curr}`)
-        ),
+        content: keywords.reduce((prev, curr) => (prev += `, ${curr}`)),
       },
       'name=keywords'
     );
+  }
+
+  addTags(tags: MetaDefinition[]): void {
+    this.meta.addTags(tags);
+  }
+
+  setCanonicalURL(url?: string) {
+    const canURL = url == undefined ? this.dom.URL : url;
+    const link: HTMLLinkElement = this.dom.createElement('link');
+    link.setAttribute('rel', 'canonical');
+    this.dom.head.appendChild(link);
+    link.setAttribute('href', canURL);
   }
 }

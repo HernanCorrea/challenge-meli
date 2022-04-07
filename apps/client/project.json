@@ -18,12 +18,15 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/client/src/favicon.ico",
-          "apps/client/src/assets"
+          "apps/client/src/assets",
+          "apps/client/src/manifest.webmanifest"
         ],
         "styles": [
           "apps/client/src/styles.scss"
         ],
-        "scripts": []
+        "scripts": [],
+        "serviceWorker": true,
+        "ngswConfigPath": "apps/client/ngsw-config.json"
       },
       "configurations": {
         "production": {
