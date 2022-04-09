@@ -7,7 +7,7 @@ export class ItemService{
         this.http = httpRequest
     }
 
-    get = async({query = '', limit = 10, skip = 0}) => 
+    get = async({query = '', limit = 4, skip = 0}) => 
         this.http.get(
             `${apiUrl.search}?q=${query}&limit=${limit}&skip=${skip}`
         );

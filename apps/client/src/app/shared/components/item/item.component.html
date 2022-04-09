@@ -1,1 +1,15 @@
-<p>item works!</p>
+<div class="item__card">
+    <div class="section__thumbnail">
+        <img [src]="item.picture" alt="">
+    </div>
+    <div class="section__content">
+        <div class="detail_item">
+            <h2 class="price__item">{{item.price.amount | currency:item.price.currency}}</h2>
+            <p class="description__item">{{item.title}}</p>
+            <span class="status__item">{{item.condition}}</span>
+        </div>
+        <div class="location__item">
+            <span>{{item.location}}</span>
+        </div>
+    </div>
+</div>

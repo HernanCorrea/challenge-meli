@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
@@ -8,10 +8,12 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from './shared/layout/layout.module';
-import { ITEM_STATE_NAME } from './core/store/item/item.state';
-import { ItemReducer } from './core/store/item/item.reducer';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { ItemEffects } from './core/store/item/item.effects';
+import { renderState } from './core/store/app.render';
+import { CustomSerializer } from './core/store/router/custom-serializer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,23 +22,18 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     AppRoutingModule,
     HttpClientModule,
     LayoutModule,
+    BrowserTransferStateModule,
     StoreModule.forRoot(
-      {[ITEM_STATE_NAME]: ItemReducer},
-      {
-        metaReducers: !environment.production ? [] : [],
-        runtimeChecks: {
-          strictActionImmutability: true,
-          strictStateImmutability: true,
-        },
-      }
+      renderState
     ),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([ItemEffects]),
+    StoreRouterConnectingModule.forRoot({ serializer: CustomSerializer}),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
+      registrationStrategy: 'registerWhenStable:30000',
     }),
   ],
   providers: [],

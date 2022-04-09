@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { isPlatformServer } from '@angular/common';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { SeoService } from './core/services/seo.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { SeoService } from './core/services/seo.service';
 export class AppComponent implements OnInit{
   title = 'client';
 
-  constructor(private seoService: SeoService) { }
+  constructor(private seoService: SeoService, 
+      @Inject(PLATFORM_ID) private platformId: any) { }
 
   ngOnInit(): void {
     // { name: 'robots', content: 'noindex, nofollow' },
@@ -19,5 +21,9 @@ export class AppComponent implements OnInit{
       { name: 'date', content: '2022-04-06', scheme: 'YYYY-MM-DD' },
       { charset: 'UTF-8'},
     ]);
+  }
+
+  isPlatformServer() {
+    return isPlatformServer(this.platformId);
   }
 }

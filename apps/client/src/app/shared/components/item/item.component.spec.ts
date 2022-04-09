@@ -27,8 +27,7 @@ describe('ItemComponent', () => {
       },
       picture: "http://http2.mlstatic.com/D_745945-MLA46552310508_062021-I.jpg",
       condition: "new",
-      free_shippin: true,
-      location: "Capital Federal"
+      free_shipping: true
     };
     fixture.detectChanges();
   });
@@ -37,7 +36,7 @@ describe('ItemComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should emit event on click', () => {
-    component.onSelect(component.item);
+    component.onSelect();
     expect(component.selectItem.emit).toHaveBeenCalledWith(
       component.item
     );

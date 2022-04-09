@@ -6,7 +6,6 @@ import { ItemListComponent } from '../../shared/components/item-list/item-list.c
 import { RouterTestingModule } from '@angular/router/testing';
 import { ListComponent } from './list.component';
 import { routes } from '../../app-routing.module';
-import { of } from 'rxjs';
 
 describe('ListComponent', () => {
   let component: ListComponent;

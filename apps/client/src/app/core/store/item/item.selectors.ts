@@ -5,7 +5,7 @@ const selectFormState = createFeatureSelector<ItemState>(ITEM_STATE_NAME);
 
 export const getItemList = createSelector(
   selectFormState,
-  (item: ItemState) => item.list
+  (item: ItemState) => item.list || []
 );
 
 export const getCategories = createSelector(

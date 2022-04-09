@@ -1,6 +1,6 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import * as EventEmitter from 'events';
+import { FormSearchI } from './search-field.interface';
 
 @Component({
   selector: 'app-search-field',
@@ -15,7 +15,7 @@ export class SearchFieldComponent  {
     search: new FormControl(null, Validators.required)
   });
 
-  onSubmit(formValue: any): void{
+  onSubmit(formValue: FormSearchI): void{
     this.searchEvent.emit(formValue.search);
   }
 

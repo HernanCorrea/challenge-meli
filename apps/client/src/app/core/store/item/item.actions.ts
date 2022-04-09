@@ -1,27 +1,29 @@
 import { createAction, props } from '@ngrx/store';
-import { AuthorI, CategoriesI, ItemI } from '../../interfaces';
+import { AuthorI, CategoriesI, ItemI, ItemListJSON } from '../../interfaces';
 
 // TODO: SEARCH ITEMS
-export const SEARCH_ITEMS = '[FORM] Search items';
+export const SEARCH_ITEMS = '[ITEM] Search items';
 export const searchItems = createAction(
     SEARCH_ITEMS,
   props<{
-    query: string;
+    query?: string;
   }>()
 );
 
-export const SET_ITEMS_API = '[FORM] Set items API';
+export const SET_ITEMS_API = '[ITEM] Set items API';
 export const setItems = createAction(
   SET_ITEMS_API,
   props<{
-    items: ItemI[],
-    categories: CategoriesI,
-    author: AuthorI
+    items: ItemListJSON
   }>()
 );
 
 // TODO: SEARCH BY ID
-export const SET_DETAIL = '[FORM] Set detail';
+export const GET_ITEM = '[ITEM] GET item by id';
+export const getItem = createAction(
+  GET_ITEM,
+);
+export const SET_DETAIL = '[ITEM] Set detail';
 export const setDetail = createAction(
   SET_DETAIL,
   props<{

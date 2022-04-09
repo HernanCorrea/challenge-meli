@@ -4,12 +4,12 @@ import { initialStateItem, ItemState } from './item.state';
 
 export const ItemReducer = createReducer(
   initialStateItem,
-  on(setItems, (state: ItemState, action): ItemState => {
+  on(setItems, (state: ItemState, {items: {items, categories, author}}): ItemState => {
     return {
       ...state,
-      list: action.items,
-      categories: action.categories,
-      author: action.author
+      list: items,
+      categories,
+      author
     };
   }),
   on(setDetail, (state: ItemState, action): ItemState => {
