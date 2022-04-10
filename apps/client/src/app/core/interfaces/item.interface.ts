@@ -10,7 +10,8 @@ export interface ItemI {
   condition: string;
   free_shipping: boolean;
   description?: string;
-  location?: string
+  location?: string;
+  sold_quantity?: number;
 }
 
 export interface AuthorI {

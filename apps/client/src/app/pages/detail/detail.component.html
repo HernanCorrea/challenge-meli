@@ -1,1 +1,37 @@
-<p>detail works!</p>
+<div *ngIf="item$ | async as item" class="container">
+  <div class="wrapper">
+    <div class="header__item">
+      <div class="info_item">
+        <div class="title__content">
+          <span class="sells__item"
+            >{{ item.condition === 'new' ? 'Nuevo' : 'Usado' }} -
+            {{ item.sold_quantity }} vendidos</span
+          >
+          <h2 class="title__item">{{ item.title }}</h2>
+        </div>
+        <div class="price__content">
+          <h1 class="price__item">
+            {{ item.price.amount | currency: item.price.currency }}
+          </h1>
+        </div>
+        <button
+          id="buy_button"
+          class="defult__button buy__item"
+          tabindex="1"
+          aria-label="Comprar item"
+        >
+          Comprar
+        </button>
+      </div>
+      <div id="detail_content" class="content__item" >
+        <div class="image__item">
+          <img [src]="item.picture" [alt]="item.title" tabindex="0" />
+        </div>
+        <div class="detail__content" tabindex="0" aria-flowto="buy_button">
+          <h2 class="description__title" >Descripción del Producto</h2>
+          <p class="description__paragraph" >{{ item.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

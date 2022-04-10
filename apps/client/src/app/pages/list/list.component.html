@@ -1,8 +1,12 @@
-<!-- <app-item-list >
-</app-item-list> -->
-<div class="container">
-    <app-item *ngFor="let item of (itemList$ | async); trackBy: trackByFn"
-        [item]="item"
-        (selectItem)="onSelect($event)"
-    ></app-item>
+<div
+  class="container"
+  aria-label="Listado de items de la tienda"
+  tabindex="0"
+  role="list"
+>
+  <app-item
+    *ngFor="let item of itemList$ | async; index as i; trackBy: trackByFn"
+    [item]="item"
+    (selectItem)="onSelect($event)"
+  ></app-item>
 </div>

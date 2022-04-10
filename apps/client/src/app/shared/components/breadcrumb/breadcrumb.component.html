@@ -1,1 +1,8 @@
-<p>breadcrumb works!</p>
+<ul aria-label="Listado de categorias" role="navigation">
+  <li *ngFor="let category of categories; last as isLast">
+    <a [routerLink]="['/items']" [queryParams]="{ search: category }">{{
+      category
+    }}</a>
+    <div aria-hidden="true" class="divider" *ngIf="!isLast">></div>
+  </li>
+</ul>

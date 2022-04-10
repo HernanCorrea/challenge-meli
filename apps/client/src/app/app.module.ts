@@ -14,14 +14,20 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { ItemEffects } from './core/store/item/item.effects';
 import { renderState } from './core/store/app.render';
 import { CustomSerializer } from './core/store/router/custom-serializer';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BreadcrumbModule } from './shared/components/breadcrumb/breadcrumb.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    CommonModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     LayoutModule,
+    BreadcrumbModule,
     BrowserTransferStateModule,
     StoreModule.forRoot(
       renderState

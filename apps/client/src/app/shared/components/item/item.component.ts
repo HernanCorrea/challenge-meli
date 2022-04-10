@@ -11,10 +11,21 @@ export class ItemComponent  {
 
   @Input() item!: ItemI;
   @Output() selectItem = new EventEmitter();
+  hover = false;
 
   @HostListener('click', ['$event.target'])
   onSelect() {
     this.selectItem.emit(this.item);
+  }
+
+  @HostListener('mouseover') 
+  onHover() {
+    if (!this.hover) this.hover  = true;
+  }
+
+  @HostListener('mouseleave') 
+  onMouseLeave() {
+    this.hover = false;
   }
 
   trackByFn(item: ItemI){

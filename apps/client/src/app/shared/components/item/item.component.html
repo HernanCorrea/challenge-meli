@@ -1,15 +1,32 @@
-<div class="item__card">
-    <div class="section__thumbnail">
-        <img [src]="item.picture" alt="">
+<div class="item__card" role="link" tabindex="0" (keyup.enter)="onSelect()">
+  <div class="section__thumbnail">
+    <img [src]="item.picture" [alt]="item.title" [class.image__hover]="hover" />
+  </div>
+  <div class="section__content">
+    <div class="detail_item">
+      <div class="title__container">
+        <h2 class="price__item">
+          {{ item.price.amount | currency: item.price.currency }}
+        </h2>
+        <img
+          *ngIf="item.free_shipping"
+          [class.card__hover]="hover"
+          class="free__item"
+          src="../../../../assets/images/ic_shipping.png"
+          aria-hidden="true"
+        />
+      </div>
+      <p class="description__item" aria-hidden="true">{{ item.title }}</p>
+      <span
+        class="status__item"
+        [attr.aria-label]="'Condición ' + item.condition"
+        >{{ item.condition }}</span
+      >
     </div>
-    <div class="section__content">
-        <div class="detail_item">
-            <h2 class="price__item">{{item.price.amount | currency:item.price.currency}}</h2>
-            <p class="description__item">{{item.title}}</p>
-            <span class="status__item">{{item.condition}}</span>
-        </div>
-        <div class="location__item">
-            <span>{{item.location}}</span>
-        </div>
+    <div class="location__item">
+      <span [attr.aria-label]="'Ubicado en ' + item.location">{{
+        item.location
+      }}</span>
     </div>
+  </div>
 </div>

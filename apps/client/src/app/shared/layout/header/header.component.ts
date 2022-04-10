@@ -15,10 +15,6 @@ export class HeaderComponent {
               private router: Router) { }
 
   onSearch(search: string): void {
-    console.log({search});
-    if (this.router.url.includes('items?')){
-      this.store.dispatch(searchItems({query: search}));
-    }
     this.router.navigate(['/items'], { queryParams: { search } });
   }
 

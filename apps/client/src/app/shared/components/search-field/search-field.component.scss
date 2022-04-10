@@ -10,9 +10,11 @@
     border: none;
     border-radius: var(--border-radius);
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 20%);
+    font-size: var(--normal-font-size);
+    color: var(--text-color);
+    height: 42px;
     &::placeholder{
         color: var(--text-color-light);
-        letter-spacing: 1px;
         font-size: var(--small-font-size);
     }
 }
@@ -24,9 +26,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.76rem 1.1rem;
+    padding: 0.72rem 1.1rem;
     border: none;
     border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    height: 42px;
     svg{
         width: 1.1rem;
         fill: #333333;

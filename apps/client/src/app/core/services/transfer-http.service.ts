@@ -38,10 +38,8 @@ export class TransferHttpService {
     try {
       return this.resolveData(key);
     } catch (e) {
-      console.log('In catch');
       return callback().pipe(
         tap((data) => {
-          console.log('cache set');
           this.setCache(key, data);
         })
       );
@@ -51,7 +49,6 @@ export class TransferHttpService {
     let resultData: any;
     if (this.hasKey(key)) {
       resultData = this.getFromCache(key);
-      console.log('getFromCache', resultData);
     } else {
       throw new Error();
     }

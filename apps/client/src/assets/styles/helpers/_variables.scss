@@ -15,7 +15,7 @@
     /* Green gradient */
     --body-color: #EEEEEE;
     --container-color: #FFE600;
-    --container-width: 75%;
+    --container-width: 95%;
 
     /* Border Radius */
     --border-radius: 4px;
@@ -33,6 +33,7 @@
 
     // Responsive typography
     @media screen and (min-width: 992px){
+        --container-width: 75%;
         --biggest-font-size: 4rem;
         --h1-font-size: 2.25rem;
         --h2-font-size: 1.5rem;
