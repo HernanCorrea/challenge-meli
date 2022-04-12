@@ -1,0 +1,51 @@
+
+/*=============== VARIABLES CSS ===============*/
+:root{
+    --header-height: 3.5rem;
+
+    /*========== Colors ==========*/
+    --hue: 14;
+
+    --first-color: #FFE600;
+    --first-color-alt: #EEEEEE;
+    --title-color: #333333;
+    --text-color: #666666;
+    --text-color-light: #999999;
+
+    /* Green gradient */
+    --body-color: #EEEEEE;
+    --container-color: #FFE600;
+    --container-width: 95%;
+
+    /* Border Radius */
+    --border-radius: 4px;
+
+    /*========== Font and typography ==========*/
+    --body-font: 'Poppins', sans-serif;
+
+    --biggest-font-size: 2rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+    --smaller-font-size: .75rem;
+
+    // Responsive typography
+    @media screen and (min-width: 992px){
+        --container-width: 75%;
+        --biggest-font-size: 4rem;
+        --h1-font-size: 2.25rem;
+        --h2-font-size: 1.5rem;
+        --h3-font-size: 1.25rem;
+        --normal-font-size: 1rem;
+        --small-font-size: .875rem;
+        --smaller-font-size: .813rem;
+    }
+
+    /*========== Font weight ==========*/
+    --font-medium: 500;
+    --font-semi-bold: 600;
+    --font-black: 900;
+
+}

@@ -1,0 +1,23 @@
+header{
+    background-color: var(--container-color);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .4rem 0;
+    .container{
+        flex-basis: var(--container-width);
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 2rem;
+        form{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+    }
+    
+  
+}

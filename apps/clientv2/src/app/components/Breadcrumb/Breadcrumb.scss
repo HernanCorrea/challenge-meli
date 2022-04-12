@@ -1,0 +1,25 @@
+ul {
+    margin: 0;
+    padding: 16px 0px;
+    display: flex;
+    gap: 1rem;
+    color: var(--text-color);
+    font-size: var(--small-font-size);
+    font-weight: 100;
+    align-items: center;
+    li {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+  }
+  a{
+      cursor: pointer;
+      color: inherit;
+      transition: all 250ms ease-in-out;
+      &:hover{
+          color: var(--title-color);
+          // font-weight: var(--font-medium);
+      }
+  }
+  
