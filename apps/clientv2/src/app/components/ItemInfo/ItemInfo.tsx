@@ -42,12 +42,13 @@ export default function ItemInfo({ item }: ItemInfoProps) {
           <div id="detail_content" className="content__item">
             <div className="image__item">
               <ImageMagnifier
-                width={'370px'}
+                width={'100%'}
+                height={'auto'}
+                lensWidth={150}
+                lensHeight={170}
                 src={item.picture}
                 show={setShowMagnifier}
                 eventCallBack={setMagnifier}
-                magnifieWidth={465}
-                magnifierHeight={400}
               />
             </div>
             <div

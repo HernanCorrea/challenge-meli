@@ -1,8 +1,8 @@
-import { AuthorI, CategoriesI, ItemI } from './item.interface';
+import { AuthorI, CategoryI, ItemI } from './item.interface';
 
 export interface ItemListJSON {
   author: AuthorI | null;
-  categories: CategoriesI;
+  categories: CategoryI[];
   items: ItemI[];
 }
 

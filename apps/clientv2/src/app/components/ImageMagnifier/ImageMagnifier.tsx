@@ -1,36 +1,30 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
+import { MagnifierEventI } from './ImageMagnifier.interface';
 import './ImageMagnifier.scss';
-type eventCallBack = (item: {
-  src: string;
-  backgroundSize: string;
-  backgroundPositionX: string;
-  backgroundPositionY: string;
-  top: string;
-  left: string;
-}) => void;
+type EventCallBack = (item: MagnifierEventI) => void;
 
-export default function ImageMagnifier({
-  src,
-  width,
-  height,
-  magnifierHeight = 100,
-  magnifieWidth = 100,
-  zoomLevel = 2.5,
-  eventCallBack,
-  show,
-}: {
+interface Props {
+  eventCallBack: EventCallBack;
+  show: (status: boolean) => void;
   src: string;
   width?: string;
   height?: string;
-  magnifierHeight?: number;
-  magnifieWidth?: number;
-  zoomLevel?: number;
-  eventCallBack: eventCallBack;
-  show: (status: boolean) => void;
-}) {
+  lensWidth?: number;
+  lensHeight?: number;
+}
+
+export default function ImageMagnifier({
+  src,
+  width = 'auto',
+  height = 'auto',
+  lensWidth = 100,
+  lensHeight = 100,
+  eventCallBack,
+  show,
+}: Props) {
   const [[x, y], setXY] = useState([0, 0]);
-  const [[imgWidth, imgHeight], setSize] = useState([0, 0]);
   const [showMagnifier, setShowMagnifier] = useState(false);
+  const lensRef = useRef(null);
 
   function setShowStatus(status: boolean): void {
     setShowMagnifier(status);
@@ -48,55 +42,54 @@ export default function ImageMagnifier({
         setShowStatus(true);
       }}
       onMouseLeave={() => {
-        // close magnifier
         setShowStatus(false);
       }}
     >
       <img
         src={src}
         style={{ height: height, width: width, cursor: 'zoom-in' }}
-        onMouseEnter={(e) => {
-          // update image size and turn-on magnifier
-          const elem = e.currentTarget;
-          const { width, height } = elem.getBoundingClientRect();
-          setSize([width, height]);
-        }}
         onMouseMove={(e) => {
           // update cursor position
           const elem = e.currentTarget;
-          const { top, left } = elem.getBoundingClientRect();
-
+          const { top, left, width, height } = elem.getBoundingClientRect();
           // calculate cursor position on the image
-          const x = e.pageX - left - window.pageXOffset;
-          const y = e.pageY - top - window.pageYOffset;
+          const xPosition = (e.pageX - left) - window.pageXOffset;
+          const yPosition = (e.pageY - top) - window.pageYOffset;
+
+          const lensElem = lensRef.current as any;
+          let x = xPosition - (lensElem.offsetWidth / 2);
+          let y = yPosition - (lensElem.offsetHeight / 2);
+          if (x > elem.width - lensElem.offsetWidth) {x = elem.width - lensElem.offsetWidth;}
+          if (x < 0) {x = 0;}
+          if (y > elem.height - lensElem.offsetHeight) {y = elem.height - lensElem.offsetHeight;}
+          if (y < 0) {y = 0;}
+
           setXY([x, y]);
           eventCallBack({
-            backgroundPositionX: `${-x * zoomLevel + magnifieWidth / 2}px`,
-            backgroundPositionY: `${-y * zoomLevel + magnifierHeight / 2}px`,
-            backgroundSize: `${imgWidth * zoomLevel}px ${
-              imgHeight * zoomLevel
-            }px`,
+            width,
+            height,
+            x,
+            y,
+            lensWidth: lensElem.offsetWidth,
+            lensHeight: lensElem.offsetHeight,
             src: src,
-            top: `${y - magnifierHeight / 2}px`,
-            left: `${x - magnifieWidth / 2}px`
           });
         }}
-     
         alt={'img'}
       />
-      <div className="lens"
+      <div
+        className="lens"
+        ref={lensRef}
         style={{
-            display: `${showMagnifier ? 'block' : 'none'}`,
-            position: 'absolute',
-            top: `${y - (400 / 2.5) / 2}px`,
-            left: `${x - (465 / 2.5) / 2}px`,
-            height: `${(400 / 2.5)}px`,
-            width: `${(465 / 2.5)}px`,
-            pointerEvents: "none",
+          display: `${showMagnifier ? 'block' : 'none'}`,
+          position: 'absolute',
+          top: `${y}px`,
+          left: `${x}px`,
+          width: `${lensWidth}px`,
+          height: `${lensHeight}px`,
+          pointerEvents: 'none',
         }}
       ></div>
-
-      
     </div>
   );
 }

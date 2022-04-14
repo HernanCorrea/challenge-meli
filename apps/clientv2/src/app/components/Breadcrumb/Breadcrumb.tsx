@@ -1,13 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { CategoriesI } from '../../interfaces';
+import { CategoryI } from '../../interfaces';
 import './Breadcrumb.scss';
 
-type props = {
-  categories: CategoriesI;
+interface Props {
+  categories: CategoryI[];
 };
 
-export default function Breadcrumb({ categories }: props) {
+export default function Breadcrumb({ categories }: Props) {
   return (
     <ul aria-label={'Listado de categorias'} role={'navigation'}>
       {categories &&

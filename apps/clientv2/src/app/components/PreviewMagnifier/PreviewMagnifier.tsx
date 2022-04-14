@@ -1,31 +1,49 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { MagnifierEventI } from '../ImageMagnifier/ImageMagnifier.interface';
 
 export default function PreviewMagnifier({
-  backgroundSize,
-  backgroundPositionX,
-  backgroundPositionY,
   src,
-  top,
-  left,
+  x,
+  y,
+  lensWidth,
+  lensHeight,
+  height,
+  width,
 }: MagnifierEventI) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (ref.current) {
+      const result = ref.current.getBoundingClientRect();
+      // /*calculate the ratio between result DIV and lens:*/
+      const cx = result.width / lensWidth;
+      const cy = result.height / lensHeight;
+
+      // const xPosition = x - (lensWidth / 2);
+      // const yPosition = y - (lensHeight / 2);
+
+      // /*set background properties for the result DIV:*/
+      ref.current.style.backgroundImage = `url(${src})`;
+      ref.current.style.backgroundSize = (width * cx) + "px " + (height * cy) + "px";;
+      ref.current.style.backgroundPosition = `-${x * cx}px -${y * cy}px`;
+    }
+  }, [x, y, height, width, lensHeight, lensWidth, src]);
+
   return (
     <div
+      ref={ref}
       style={{
         position: 'absolute',
         pointerEvents: 'none',
-        height: `400px`,
-        width: `465px`,
-        top: 0,
-        left: 0,
+        height: `100%`,
+        width: `100%`,
         opacity: '1',
         border: '1px solid lightgray',
         backgroundColor: 'white',
-        backgroundImage: `url('${src}')`,
         backgroundRepeat: 'no-repeat',
-        backgroundSize,
-        backgroundPositionX,
-        backgroundPositionY,
+        // backgroundImage: `url(${src})`,
+        // backgroundPosition: `-${xPosition * cx}px -${yPosition * cy}px`,
+        // backgroundSize: (width * cx) + "px " + (height * cy) + "px"
       }}
     ></div>
   );
