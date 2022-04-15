@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ImageMagnifierModule } from '../../shared/components/image-magnifier/image-magnifier.module';
 import { DetailComponent } from './detail.component';
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ImageMagnifierModule
   ],
   exports: [
     DetailComponent

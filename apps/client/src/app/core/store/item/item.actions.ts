@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { CategoriesI, ItemI, ItemListJSON } from '../../interfaces';
+import { CategoryI, ItemI, ItemListJSON } from '../../interfaces';
 
 // TODO: SEARCH ITEMS
 export const SEARCH_ITEMS = '[ITEM] Search items';
@@ -30,7 +30,7 @@ export const SET_CATEGORIES = '[ITEM] Set categories';
   export const setCategories = createAction(
   SET_CATEGORIES,
   props<{
-    categories: CategoriesI[]
+    categories: CategoryI[]
   }>()
 );
 

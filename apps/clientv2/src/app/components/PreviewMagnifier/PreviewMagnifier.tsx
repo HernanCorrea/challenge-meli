@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { MagnifierEventI } from '../ImageMagnifier/ImageMagnifier.interface';
 
 export default function PreviewMagnifier({
@@ -18,9 +18,6 @@ export default function PreviewMagnifier({
       // /*calculate the ratio between result DIV and lens:*/
       const cx = result.width / lensWidth;
       const cy = result.height / lensHeight;
-
-      // const xPosition = x - (lensWidth / 2);
-      // const yPosition = y - (lensHeight / 2);
 
       // /*set background properties for the result DIV:*/
       ref.current.style.backgroundImage = `url(${src})`;

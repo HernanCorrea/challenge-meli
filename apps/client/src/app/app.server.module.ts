@@ -3,11 +3,13 @@ import { ServerModule, ServerTransferStateModule } from '@angular/platform-serve
 
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
     AppModule,
     ServerModule,
+    NoopAnimationsModule,
     ServerTransferStateModule
   ],
   bootstrap: [AppComponent],

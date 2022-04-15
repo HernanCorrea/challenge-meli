@@ -17,15 +17,7 @@ import {
   setItemList,
   setItems,
 } from '../../core/store/item/item.actions';
-import {
-  animate,
-  group,
-  query,
-  stagger,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
+import { animate, group, keyframes, query, stagger, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-list',
@@ -33,50 +25,23 @@ import {
   styleUrls: ['./list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
-    trigger('listAnimation', [
-      transition('* => *', [
-        // each time the binding value changes
-        query(
-          ':leave',
-          [stagger(100, [animate('0.5s', style({ opacity: 0 }))])],
-          { optional: true }
-        ),
-        query(
-          ':enter',
-          [
-            style({ opacity: 0 }),
-            stagger(100, [animate('0.5s', style({ opacity: 1 }))]),
-          ],
-          { optional: true }
-        ),
+    trigger('flyInOut', [
+      state('in', style({transform: 'translateX(0)'})),
+      transition('void => *', [
+        animate(300, keyframes([
+          style({opacity: 0, transform: 'translateX(-100%)', offset: 0}),
+          style({opacity: 1, transform: 'translateX(300px)',  offset: 0.3}),
+          style({opacity: 1, transform: 'translateX(0)',     offset: 1.0})
+        ]))
       ]),
-    ]),
-    trigger('fade', [
-      transition(':enter', [
-        group([
-          style({
-            opacity: 0,
-            height: '0',
-            padding: '0',
-            transform: 'translateY(20px) scale(0.8)',
-          }),
-          animate(
-            '100ms ease-in',
-            style({
-              height: '*',
-              padding: '*',
-              transform: 'translateY(0) scale(1)',
-            })
-          ),
-          animate(
-            '150ms ease-in',
-            style({
-              opacity: 1,
-            })
-          ),
-        ]),
-      ]),
-    ]),
+      transition('* => void', [
+        animate(300, keyframes([
+          style({opacity: 1, transform: 'translateX(0)',     offset: 0}),
+          style({opacity: 1, transform: 'translateX(-15px)', offset: 0.7}),
+          style({opacity: 0, transform: 'translateX(100%)',  offset: 1.0})
+        ]))
+      ])
+    ])
   ],
 })
 export class ListComponent implements OnInit, OnDestroy {
@@ -134,7 +99,5 @@ export class ListComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
-    // this.store.dispatch(setItemList({ list: [] }));
-    // this.store.dispatch(setCategories({ categories: [] }));
   }
 }

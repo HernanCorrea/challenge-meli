@@ -1,9 +1,16 @@
 <header>
-    <div class="container">
-        <div class="logo">
-            <img src="../../../../assets/images/logo_ml.png" 
-                alt="Meli Logo">
-        </div>
-        <app-search-field (searchEvent)="onSearch($event)"></app-search-field>
+  <div class="container">
+    <div class="logo" [routerLink]="['/']">
+      <img src="../../../../assets/images/logo_ml.png" alt="Meli Logo" />
     </div>
+    <app-search-field
+      (searchEvent)="onSearch($event)"
+      [isLoading]="(isLoadingSearch$ | async) || false"
+    ></app-search-field>
+  </div>
+  <!-- <div class="loader__container">
+      <div class="loader" *ngIf="isLoadingGeneral$ | async">
+        <div class="loaderBar"></div>
+      </div>
+  </div> -->
 </header>

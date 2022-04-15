@@ -1,7 +1,7 @@
-<div *ngIf="item$ | async as item" class="container">
+<div *ngIf="item$ | async as item" class="container__detail">
   <div class="wrapper">
     <div class="header__item">
-      <div class="info_item">
+      <div class="info__item">
         <div class="title__content">
           <span class="sells__item"
             >{{ item.condition === 'new' ? 'Nuevo' : 'Usado' }} -
@@ -22,14 +22,26 @@
         >
           Comprar
         </button>
+        <app-image-magnifier-preview
+          *ngIf="isHoverImage$ | async"
+          [imageMagnifier]="imageMagnifier"
+        ></app-image-magnifier-preview>
       </div>
-      <div id="detail_content" class="content__item" >
+      <div id="detail_content" class="content__item">
         <div class="image__item">
-          <img [src]="item.picture" [alt]="item.title" tabindex="0" />
+          <app-image-magnifier
+            [src]="item.picture"
+            [width]="'100%'"
+            [lensWidth]="150"
+            [lensHeight]="170"
+            (isHover)="isHoverImageEvent($event)"
+            (eventCallBack)="eventCallBack($event)"
+          ></app-image-magnifier>
+          <!-- <img [src]="item.picture" [alt]="item.title" tabindex="0" /> -->
         </div>
         <div class="detail__content" tabindex="0" aria-flowto="buy_button">
-          <h2 class="description__title" >Descripción del Producto</h2>
-          <p class="description__paragraph" >{{ item.description }}</p>
+          <h2 class="description__title">Descripción del Producto</h2>
+          <p class="description__paragraph">{{ item.description }}</p>
         </div>
       </div>
     </div>

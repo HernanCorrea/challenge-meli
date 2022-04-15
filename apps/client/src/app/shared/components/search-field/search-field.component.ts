@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormSearchI } from './search-field.interface';
 
@@ -8,7 +8,7 @@ import { FormSearchI } from './search-field.interface';
   styleUrls: ['./search-field.component.scss']
 })
 export class SearchFieldComponent  {
-
+  @Input() isLoading = false;
   @Output() searchEvent = new EventEmitter();
 
   form = new FormGroup({

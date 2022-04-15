@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { CategoriesI } from '../../../core/interfaces';
+import { CategoryI } from '../../../core/interfaces';
 
 @Component({
   selector: 'app-breadcrumb',
@@ -8,5 +8,5 @@ import { CategoriesI } from '../../../core/interfaces';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BreadcrumbComponent {
-  @Input() categories!: CategoriesI[] | null;
+  @Input() categories!: CategoryI[] | null;
 }

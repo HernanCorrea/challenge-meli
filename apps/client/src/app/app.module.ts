@@ -8,7 +8,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from './shared/layout/layout.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { ItemEffects } from './core/store/item/item.effects';
@@ -17,6 +17,7 @@ import { CustomSerializer } from './core/store/router/custom-serializer';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BreadcrumbModule } from './shared/components/breadcrumb/breadcrumb.module';
 import { CommonModule } from '@angular/common';
+import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +25,6 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
-    BrowserAnimationsModule,
     HttpClientModule,
     LayoutModule,
     BreadcrumbModule,
@@ -42,7 +42,13 @@ import { CommonModule } from '@angular/common';
       registrationStrategy: 'registerWhenStable:30000',
     }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -19,4 +19,4 @@ export interface AuthorI {
   lastname: string;
 }
 
-export type CategoriesI = string[];
+export type CategoryI = string;

@@ -14,7 +14,8 @@ export class CategoryService {
   formatCategory = async (itemsResponse: ItemSearchI) => {
     const availableFilters =
       itemsResponse?.filters?.[0]?.values?.[0]?.path_from_root;
-    return this.formatToArray(availableFilters) || [itemsResponse.query];
+    const defaultData = itemsResponse?.results?.length ? [itemsResponse.query] : [];
+    return this.formatToArray(availableFilters) || defaultData;
   };
 
   getFormatById = async (id: string) => {

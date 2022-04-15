@@ -1,10 +1,10 @@
-import React, { ReducerWithoutAction, useReducer } from 'react';
+import React, { useReducer } from 'react';
 import {
   listInitialState,
   ListReducer,
   ListReducerTypes,
 } from './List.reducer';
-import { useEffect, useState } from 'react';
+import { useEffect, } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
 import Item from '../../components/Item/Item';

@@ -1,4 +1,4 @@
-import { AuthorI, CategoriesI, ItemI } from '../../interfaces';
+import { AuthorI, CategoryI, ItemI } from '../../interfaces';
 
 export const ITEM_STATE_NAME = 'item';
 
@@ -7,7 +7,7 @@ export interface ItemState {
   searchQuery: string | null,
   detail: ItemI | null,
   author: AuthorI | null,
-  categories: CategoriesI[],
+  categories: CategoryI[],
 }
 
 export const initialStateItem: ItemState = {

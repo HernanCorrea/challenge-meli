@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListEmptyComponent } from './list-empty.component';
+import { ImageMagnifierComponent } from './image-magnifier.component';
 
-describe('ListEmptyComponent', () => {
-  let component: ListEmptyComponent;
-  let fixture: ComponentFixture<ListEmptyComponent>;
+describe('ImageMagnifierComponent', () => {
+  let component: ImageMagnifierComponent;
+  let fixture: ComponentFixture<ImageMagnifierComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListEmptyComponent ]
+      declarations: [ ImageMagnifierComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListEmptyComponent);
+    fixture = TestBed.createComponent(ImageMagnifierComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
