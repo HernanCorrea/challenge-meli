@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  BrowserTransferStateModule,
+} from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
@@ -29,11 +32,9 @@ import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
     LayoutModule,
     BreadcrumbModule,
     BrowserTransferStateModule,
-    StoreModule.forRoot(
-      renderState
-    ),
+    StoreModule.forRoot(renderState),
     EffectsModule.forRoot([ItemEffects]),
-    StoreRouterConnectingModule.forRoot({ serializer: CustomSerializer}),
+    StoreRouterConnectingModule.forRoot({ serializer: CustomSerializer }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
@@ -47,7 +48,7 @@ import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,
       multi: true,
-    }
+    },
   ],
   bootstrap: [AppComponent],
 })

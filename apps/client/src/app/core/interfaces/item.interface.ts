@@ -14,9 +14,4 @@ export interface ItemI {
   sold_quantity?: number;
 }
 
-export interface AuthorI {
-  name: string;
-  lastname: string;
-}
-
 export type CategoryI = string;

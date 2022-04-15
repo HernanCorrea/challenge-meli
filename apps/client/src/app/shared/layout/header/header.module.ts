@@ -4,10 +4,9 @@ import { RouterModule } from '@angular/router';
 import { SearchFieldModule } from '../../components/search-field/search-field.module';
 import { HeaderComponent } from './header.component';
 
-
 @NgModule({
   declarations: [HeaderComponent],
   imports: [CommonModule, SearchFieldModule, RouterModule],
-  exports: [HeaderComponent]
+  exports: [HeaderComponent],
 })
 export class HeaderModule {}

@@ -1,13 +1,12 @@
 import { AuthorI, CategoryI, ItemI } from '../../interfaces';
 
 export const ITEM_STATE_NAME = 'item';
-
 export interface ItemState {
-  list: ItemI[] | null,
-  searchQuery: string | null,
-  detail: ItemI | null,
-  author: AuthorI | null,
-  categories: CategoryI[],
+  list: ItemI[] | null;
+  searchQuery: string | null;
+  detail: ItemI | null;
+  author: AuthorI | null;
+  categories: CategoryI[];
 }
 
 export const initialStateItem: ItemState = {
@@ -15,6 +14,5 @@ export const initialStateItem: ItemState = {
   searchQuery: null,
   author: null,
   detail: null,
-  categories: []
+  categories: [],
 };
-

@@ -1,10 +1,9 @@
-import { createAction, props } from "@ngrx/store";
-import { LoadState } from "./load.state";
-
+import { createAction, props } from '@ngrx/store';
+import { LoadState } from './load.state';
 
 export const SET_LOADING = '[LOAD] Set loading';
 export const setLoading = createAction(
-    SET_LOADING,
+  SET_LOADING,
   props<{
     load?: LoadState;
   }>()

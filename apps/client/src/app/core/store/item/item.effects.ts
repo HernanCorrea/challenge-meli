@@ -2,16 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import {
-  catchError,
-  debounceTime,
-  map,
-  mergeMap,
-  of,
-  tap,
-  throttleTime,
-  withLatestFrom,
-} from 'rxjs';
+import { catchError, map, mergeMap, of, withLatestFrom } from 'rxjs';
 import { ItemService } from '../../services/item.service';
 import { AppState } from '../app.state';
 import { getCurrentRoute } from '../router/router.selector';

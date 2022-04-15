@@ -8,9 +8,8 @@ describe('ImageMagnifierPreviewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ImageMagnifierPreviewComponent ]
-    })
-    .compileComponents();
+      declarations: [ImageMagnifierPreviewComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

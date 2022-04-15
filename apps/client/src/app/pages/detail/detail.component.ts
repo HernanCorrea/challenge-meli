@@ -1,14 +1,12 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+} from '@angular/core';
 import { Store } from '@ngrx/store';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { ItemI } from '../../core/interfaces';
 import { SeoService } from '../../core/services/seo.service';
 import { AppState } from '../../core/store/app.state';
-import {
-  getItem,
-  setCategories,
-  setDetail,
-} from '../../core/store/item/item.actions';
 import { getItemDetail } from '../../core/store/item/item.selectors';
 import { MagnifierEventI } from '../../shared/components/image-magnifier/image-magnifier.interfaces';
 
@@ -16,22 +14,24 @@ import { MagnifierEventI } from '../../shared/components/image-magnifier/image-m
   selector: 'app-detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DetailComponent implements OnInit {
+export class DetailComponent {
   constructor(private seoService: SeoService, private store: Store<AppState>) {}
 
-  item$: Observable<ItemI | null> = this.store.select(getItemDetail);
+  item$: Observable<ItemI | null> = this.store.select(getItemDetail).pipe(
+    tap((item) => {
+      this.setSeoMetadata(item);
+    })
+  );
   isHoverImage$ = new BehaviorSubject<boolean>(false);
   imageMagnifier: MagnifierEventI | null = null;
-  
-  ngOnInit(): void {
-    this.setSeoMetadata();
-  }
 
-  setSeoMetadata(): void {
+  setSeoMetadata(item: ItemI | null): void {
+    if (!item) return;
+    
     this.seoService.setCanonicalURL();
-    this.seoService.setTitle('Detalle de producto');
+    this.seoService.setTitle(item.title.substring(0, 60));
     this.seoService.setDescription(
       'Obtener productos de la API de Mercado Libre'
     );
@@ -52,5 +52,4 @@ export class DetailComponent implements OnInit {
   eventCallBack(imageMagnifier: MagnifierEventI): void {
     this.imageMagnifier = imageMagnifier;
   }
-
 }

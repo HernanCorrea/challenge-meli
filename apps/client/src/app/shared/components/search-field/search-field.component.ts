@@ -5,18 +5,17 @@ import { FormSearchI } from './search-field.interface';
 @Component({
   selector: 'app-search-field',
   templateUrl: './search-field.component.html',
-  styleUrls: ['./search-field.component.scss']
+  styleUrls: ['./search-field.component.scss'],
 })
-export class SearchFieldComponent  {
+export class SearchFieldComponent {
   @Input() isLoading = false;
   @Output() searchEvent = new EventEmitter();
 
   form = new FormGroup({
-    search: new FormControl(null, Validators.required)
+    search: new FormControl(null, Validators.required),
   });
 
-  onSubmit(formValue: FormSearchI): void{
+  onSubmit(formValue: FormSearchI): void {
     this.searchEvent.emit(formValue.search);
   }
-
 }

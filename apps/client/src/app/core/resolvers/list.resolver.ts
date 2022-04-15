@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {
-  Router,
   Resolve,
   RouterStateSnapshot,
   ActivatedRouteSnapshot,
@@ -20,10 +19,7 @@ export class ListResolver implements Resolve<boolean> {
     private itemService: ItemService
   ) {}
 
-  resolve(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean> {
+  resolve(route: ActivatedRouteSnapshot): Observable<boolean> {
     return this.itemService.getItems(route.queryParams['search']).pipe(
       map((items: any) => {
         this.store.dispatch(setItems({ items }));

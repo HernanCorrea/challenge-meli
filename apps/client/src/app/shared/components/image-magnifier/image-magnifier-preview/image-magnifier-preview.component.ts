@@ -1,5 +1,9 @@
-import { ViewEncapsulation } from '@angular/compiler';
-import { Component, ElementRef, HostBinding, Input, OnInit, Renderer2, ViewChild, } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  ViewChild,
+} from '@angular/core';
 import { MagnifierEventI } from '../image-magnifier.interfaces';
 
 @Component({
@@ -7,7 +11,7 @@ import { MagnifierEventI } from '../image-magnifier.interfaces';
   templateUrl: './image-magnifier-preview.component.html',
   styleUrls: ['./image-magnifier-preview.component.scss'],
 })
-export class ImageMagnifierPreviewComponent  {
+export class ImageMagnifierPreviewComponent {
   @ViewChild('magnifierPreview', { static: true })
   magnifierPreview!: ElementRef;
 

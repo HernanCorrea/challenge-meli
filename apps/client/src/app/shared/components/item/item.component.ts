@@ -1,14 +1,20 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  Output,
+} from '@angular/core';
 import { ItemI } from '../../../core/interfaces';
 
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ItemComponent  {
-
+export class ItemComponent {
   @Input() item!: ItemI;
   @Output() selectItem = new EventEmitter();
   hover = false;
@@ -18,17 +24,17 @@ export class ItemComponent  {
     this.selectItem.emit(this.item);
   }
 
-  @HostListener('mouseover') 
+  @HostListener('mouseover')
   onHover() {
-    if (!this.hover) this.hover  = true;
+    if (!this.hover) this.hover = true;
   }
 
-  @HostListener('mouseleave') 
+  @HostListener('mouseleave')
   onMouseLeave() {
     this.hover = false;
   }
 
-  trackByFn(item: ItemI){
+  trackByFn(item: ItemI) {
     return item.id;
   }
 }

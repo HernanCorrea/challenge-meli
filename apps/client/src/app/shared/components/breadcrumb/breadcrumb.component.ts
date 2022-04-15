@@ -8,5 +8,5 @@ import { CategoryI } from '../../../core/interfaces';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BreadcrumbComponent {
-  @Input() categories!: CategoryI[] | null;
+  @Input() categories: CategoryI[] = [];
 }

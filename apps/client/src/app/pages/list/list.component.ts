@@ -6,43 +6,20 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable, skip, Subject, takeUntil } from 'rxjs';
+import { Observable, skip, Subject, takeUntil, tap } from 'rxjs';
 import { SeoService } from '../../core/services/seo.service';
 import { AppState } from '../../core/store/app.state';
 import { getItemList } from '../../core/store/item/item.selectors';
 import { ItemI } from '../../core/interfaces';
-import {
-  searchItems,
-  setCategories,
-  setItemList,
-  setItems,
-} from '../../core/store/item/item.actions';
-import { animate, group, keyframes, query, stagger, state, style, transition, trigger } from '@angular/animations';
+import { searchItems } from '../../core/store/item/item.actions';
+import { TriggerFlyInOut } from '../../shared/animations/stagger.animation';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [
-    trigger('flyInOut', [
-      state('in', style({transform: 'translateX(0)'})),
-      transition('void => *', [
-        animate(300, keyframes([
-          style({opacity: 0, transform: 'translateX(-100%)', offset: 0}),
-          style({opacity: 1, transform: 'translateX(300px)',  offset: 0.3}),
-          style({opacity: 1, transform: 'translateX(0)',     offset: 1.0})
-        ]))
-      ]),
-      transition('* => void', [
-        animate(300, keyframes([
-          style({opacity: 1, transform: 'translateX(0)',     offset: 0}),
-          style({opacity: 1, transform: 'translateX(-15px)', offset: 0.7}),
-          style({opacity: 0, transform: 'translateX(100%)',  offset: 1.0})
-        ]))
-      ])
-    ])
-  ],
+  animations: [TriggerFlyInOut],
 })
 export class ListComponent implements OnInit, OnDestroy {
   constructor(
@@ -56,16 +33,20 @@ export class ListComponent implements OnInit, OnDestroy {
   destroy$ = new Subject<void>();
 
   ngOnInit(): void {
-    this.routerListen();
     this.setSeoMetadata();
+    this.routerListen();
   }
 
   routerListen(): void {
     this.act.queryParams
       .pipe(
+        tap((params) => {
+          this.seoService.setTitle(`${params['search']} - Mercado Libre`);
+        }),
         skip(1),
         takeUntil(this.destroy$)
-      ).subscribe((params) => {
+      )
+      .subscribe((params) => {
         if (params['search']) {
           this.store.dispatch(searchItems({ query: params['search'] }));
         }
@@ -74,7 +55,6 @@ export class ListComponent implements OnInit, OnDestroy {
 
   setSeoMetadata(): void {
     this.seoService.setCanonicalURL();
-    this.seoService.setTitle('Listado de productos');
     this.seoService.setDescription(
       'Obtener productos de la API de Mercado Libre'
     );

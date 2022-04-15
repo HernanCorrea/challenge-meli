@@ -13,12 +13,12 @@ ul {
     align-items: center;
   }
 }
-a{
-    cursor: pointer;
-    color: inherit;
-    transition: all 250ms ease-in-out;
-    &:hover{
-        color: var(--title-color);
-        // font-weight: var(--font-medium);
-    }
+a {
+  cursor: pointer;
+  color: inherit;
+  transition: all 250ms ease-in-out;
+  &:hover {
+    color: var(--title-color);
+    // font-weight: var(--font-medium);
+  }
 }

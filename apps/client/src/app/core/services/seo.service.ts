@@ -6,7 +6,6 @@ import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
   providedIn: 'root',
 })
 export class SeoService {
-  private titleBase = `MeliChallenge - `;
 
   constructor(
     private title: Title,
@@ -15,8 +14,9 @@ export class SeoService {
   ) {}
 
   setTitle(titlePart: string): void {
-    this.title.setTitle(this.titleBase + titlePart);
+    this.title.setTitle(titlePart);
   }
+
   setDescription(description: string): void {
     this.meta.updateTag(
       { name: 'description', content: description },

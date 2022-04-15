@@ -4,6 +4,6 @@ import { LoadState, LOAD_STATE_NAME } from './load.state';
 const selectLoadState = createFeatureSelector<LoadState>(LOAD_STATE_NAME);
 
 export const getLoad = createSelector(
-    selectLoadState,
+  selectLoadState,
   (load: LoadState) => load
 );
