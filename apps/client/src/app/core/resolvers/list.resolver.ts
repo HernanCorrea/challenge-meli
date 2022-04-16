@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
   Resolve,
-  RouterStateSnapshot,
   ActivatedRouteSnapshot,
 } from '@angular/router';
 import { Store } from '@ngrx/store';

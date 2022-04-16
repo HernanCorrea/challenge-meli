@@ -6,7 +6,6 @@ import {
   HttpInterceptor,
   HttpResponse,
   HttpContextToken,
-  HttpErrorResponse,
   HttpContext,
 } from '@angular/common/http';
 import { Observable, of } from 'rxjs';

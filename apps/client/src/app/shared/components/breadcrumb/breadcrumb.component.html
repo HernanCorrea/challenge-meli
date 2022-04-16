@@ -1,7 +1,6 @@
 <ul
   *ngIf="categories?.length"
   aria-label="Listado de categorias"
-  role="navigation"
 >
   <li *ngFor="let category of categories; last as isLast">
     <a [routerLink]="['/items']" [queryParams]="{ search: category }">{{

@@ -24,6 +24,7 @@ export class HeaderComponent {
   //   .pipe(map((load) => load.isLoading));
 
   onSearch(search: string): void {
-    this.router.navigate(['/items'], { queryParams: { search } });
+    const action = 'action';
+    this.router.navigate(['/items'], { queryParams: { search, action } });
   }
 }

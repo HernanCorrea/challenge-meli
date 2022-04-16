@@ -8,6 +8,7 @@
     <app-item
       *ngFor="let item of itemList; index as i; trackBy: trackByFn"
       [item]="item"
+      role="listitem"
       (selectItem)="onSelect($event)"
     ></app-item>
   </div>

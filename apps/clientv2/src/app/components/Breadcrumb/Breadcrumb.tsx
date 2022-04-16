@@ -9,7 +9,7 @@ interface Props {
 
 export default function Breadcrumb({ categories }: Props) {
   return (
-    <ul aria-label={'Listado de categorias'} role={'navigation'}>
+    <ul aria-label={'Listado de categorias'}>
       {categories &&
         categories.map((category: string, index: number) => (
           <li key={index}>

@@ -21,7 +21,7 @@ export default function Item({ item, clickEvent }: Props) {
   return (
     <div
       className="item__card"
-      role="link"
+      role="listitem"
       tabIndex={0}
       onClick={dispatchDetail}
       onKeyPress={dispatchDetail}

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { SeoService } from './core/services/seo.service';
 import { AppState } from './core/store/app.state';
-import { map, Observable, tap } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { getCategories } from './core/store/item/item.selectors';
 import { CategoryI } from './core/interfaces';
 import { getLoad } from './core/store/load/load.selectors';

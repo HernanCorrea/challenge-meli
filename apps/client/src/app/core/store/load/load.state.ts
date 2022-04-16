@@ -1,5 +1,3 @@
-import { AuthorI, CategoryI, ItemI } from '../../interfaces';
-
 export const LOAD_STATE_NAME = 'load';
 
 export interface LoadState {
