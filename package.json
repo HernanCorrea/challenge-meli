@@ -11,7 +11,7 @@
     "test:api": "npx nx test api --silent",
     "test-watch:api": "npm run test:api -- --watch",
     "test:client-e2e": "npx nx e2e client-e2e --watch",
-    "test:client": "npx nx run client:test --silent",
+    "test:client": "npx nx run client:test --silent --watch",
     "dev:ssr": "npx nx run client:serve-ssr",
     "test:clientv2-e2e": "npx nx e2e clientv2-e2e --watch",
     "dev:clientv2": "npx ng s clientv2",

@@ -10,6 +10,7 @@ describe('NoDataComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [NoDataComponent],
     }).compileComponents();
+    
   });
 
   beforeEach(() => {

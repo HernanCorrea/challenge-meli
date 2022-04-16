@@ -5,6 +5,8 @@ import { initialStateItem } from '../../core/store/item/item.state';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ListComponent } from './list.component';
 import { routes } from '../../app-routing.module';
+import { ItemI } from '../../core/interfaces';
+import { ItemModule } from '../../shared/components/item/item.module';
 
 describe('ListComponent', () => {
   let component: ListComponent;
@@ -42,7 +44,7 @@ describe('ListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ListComponent],
-      imports: [RouterTestingModule.withRoutes(routes)],
+      imports: [RouterTestingModule.withRoutes(routes), ItemModule],
       providers: [
         provideMockStore({
           initialState: {
@@ -75,7 +77,7 @@ describe('ListComponent', () => {
   });
   it('should navigate to detail page', () => {
     const spy = jest.spyOn(roter, 'navigate');
-    // component.onSelect('test');
+    component.onSelect({id: 'test'} as ItemI);
     expect(spy).toHaveBeenCalledTimes(1);
   });
 });

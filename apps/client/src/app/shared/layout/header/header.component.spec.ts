@@ -8,11 +8,14 @@ import { initialStateItem } from '../../../core/store/item/item.state';
 import { RouterTestingModule } from '@angular/router/testing';
 import { routes } from '../../../app-routing.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { Router } from '@angular/router';
+import { of } from 'rxjs';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
-  let store: MockStore;
+  // let store: MockStore;
+  let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -35,7 +38,7 @@ describe('HeaderComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
-    store = TestBed.inject(MockStore);
+    router = TestBed.inject(Router);
     fixture.detectChanges();
   });
 
@@ -44,14 +47,14 @@ describe('HeaderComponent', () => {
   });
 
   it('should dispatch search action on onSearch event ', () => {
-    const spy = jest.spyOn(store, 'dispatch');
-    const action = searchItems({ query: 'test' });
+    const spy = jest.spyOn(router, 'navigate');
     // fixture.detectChanges();
     component.onSearch('test');
     component.onSearch('test 2');
     component.onSearch('test 24');
 
-    expect(spy).toHaveBeenCalledWith(action);
+    // expect(spy).toHaveBeenCalledWith(action);
     expect(spy).toHaveBeenCalledTimes(3);
   });
+
 });

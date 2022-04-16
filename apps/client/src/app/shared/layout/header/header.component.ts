@@ -17,11 +17,6 @@ export class HeaderComponent {
   isLoadingSearch$: Observable<boolean> = this.store
     .select(getLoad)
     .pipe(map((load) => load.isLoading));
-  // .pipe(map((load) => load.type === METHOD_ID && load.isLoading));
-
-  // isLoadingGeneral$: Observable<boolean> = this.store
-  //   .select(getLoad)
-  //   .pipe(map((load) => load.isLoading));
 
   onSearch(search: string): void {
     const action = 'action';

@@ -1,105 +1,56 @@
+# MELI - Challenge
 
+## Overview
+Este proyecto se enfocó en resolver 4 nichos principales, Usabilidad, SEO, Rendimiento y Escalabilidad, para poder llegar a esto, decidí utilizar una tecnológia mono-repo llamada Nx, que me permite manejar multiples apps y librerías en un mismo repositorio. Decidí hacer este challenge dos veces, pero con diferentes tecnologías (Angular y React), aunque para esta presentación preferiría irme por Angular porque esta cumple con todo lo requerido.
 
-# Challengenrwl
+Para angular estoy haciendo uso de Server side rendering (SSR) que me permite mejorar el performance y SEO, ya que sin esto mi aplicación sería irrastreable para los robot de los navegadores. El SSR solo trabaja en el "First Content Pain" ya que luego es el cliente que se encarga de hacer las demas peticiones aunque esto puede bajar mi rendimiento hago uso de "Progresive Web App" para hacer uso también de los "Services workers", las peticiones que hacen tanto por el lado de servidor como del client en mi FrontEnd se cachean para que se pueda compartir esta información en ambos lados, aunque este cache solo dura mientras la web esta corriendo una vez cerrada el cache se borra y todo vuelve a empezar de nuevo.
 
-This project was generated using [Nx](https://nx.dev).
+Hago uso de Ngrx (Redux) para el manejo de estados, aunque es una aplicación sencilla la idea es que sea escalable, de esa forma también Ngrx se encarga de hacer toda la lógica del negocio y mis componentes unicamente se enfocan en pintar la data (que se saca del store) o disparar eventos (dispatch).
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
-
-🔎 **Smart, Fast and Extensible Build System**
-
-## Quick Start & Documentation
-
-[Nx Documentation](https://nx.dev/angular)
-
-[10-minute video showing all Nx features](https://nx.dev/getting-started/intro)
-
-[Interactive Tutorial](https://nx.dev/tutorial/01-create-application)
-
-## Adding capabilities to your workspace
-
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
-
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
-
-Below are our core plugins:
-
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
-
-There are also many [community plugins](https://nx.dev/community) you could add.
-
-## Generate an application
-
-Run `ng g @nrwl/angular:app my-app` to generate an application.
-
-> You can use any of the plugins above to generate applications as well.
-
-When using Nx, you can create multiple applications and libraries in the same workspace.
-
-## Generate a library
-
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are shareable across libraries and applications. They can be imported from `@challengenrwl/mylib`.
-
-## Development server
-
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng g component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
+Para la parte de testing, decidí utilizar las librerías Jest y Jasmin y para el e2e utilizo cypress.
+## ✨Funcionalidades
+- Listado de items
+- Detalles del item
+- Barra de busqueda de items
+- Busqueda de items por el navegador
+- Zoom al pasar el mouse por la imagen
+- Listado de categorias
+- Aria-atributes para lectores de pantalla
+- Diseño responsive
+- Animaciones
+- Testing e2e
+- Unit Testing
+- SSR with PWA
+- Caching Request
 
 
 
+## Este proyecto fue realizado con las siguientes tecnologías:
+* Express: 12.3
+* Angular: 12.3
+* React: 12.3
+* npm: 12.3
+* Nx (Monorepo): 12.3
 
+## Instalación
+MeliChallenge esta usando un mono-repo para el manejo de multiples paquetes. Para ejecutar el proyecto en ambiente local o producción, deberás correr los siguientes comando en la carpeta raiz.
 
+```node
+npm install
+```
+```javascript
+// DEV mode
+npm run serve:all
+// Prod mode
+npm run prod:all
+```
+```javascript
+// E2E Test
+npm run test:api
+// Client 1
+npm run test:client
+// Client 2 
+npm run test:client
+```
 
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+Please make sure to update tests as appropriate.

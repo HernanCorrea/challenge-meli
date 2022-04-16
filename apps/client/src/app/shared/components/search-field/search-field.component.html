@@ -23,12 +23,14 @@
     <img
       *ngIf="isLoading"
       [@fadeInOut]
+      id="loading_icon"
       class="rolling__img"
       src="../../../../assets/images/rolling.gif"
       alt=""
     />
     <svg
       *ngIf="!isLoading"
+      id="search_icon"
       [@fadeInOut]
       class="search_button_img"
       aria-hidden="true"
