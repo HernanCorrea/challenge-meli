@@ -1,5 +1,3 @@
-import { getGreeting } from '../support/app.po';
-
 const responseDetail = {
   author: { name: 'Hernán', lastname: 'Correa' },
   item: {
@@ -59,13 +57,15 @@ describe('client', () => {
       body: responseDetail,
     }).as('items');
     cy.visit('/items/MLA1127715651');
-    cy.wait('@items')
-    // .its('response.body').should('have.length', 2);
+    cy.wait('@items');
     cy.get('.image__item img').should('exist');
     cy.get('#buy_button').should('include.text', 'Comprar');
     cy.get('app-breadcrumb li').should('have.length', 2);
     cy.get('.title__item').should('contain.text', responseDetail.item.title);
-    cy.get('.description__paragraph').should('contain.text', responseDetail.item.description);
+    cy.get('.description__paragraph').should(
+      'contain.text',
+      responseDetail.item.description
+    );
   });
   it('should navigate home on click logo', () => {
     cy.visit('/items?search=Iphone');
@@ -73,5 +73,21 @@ describe('client', () => {
     cy.get('app-item').should('not.exist');
   });
 
+  it('should navigate to not found data', () => {
+    cy.get('input[type=text]').type('lksndflkasjflkasjflsajflsajflksaf{enter}');
+    cy.url().should(
+      'include',
+      '/items?search=lksndflkasjflkasjflsajflsajflksaf'
+    );
+    cy.get('.not__content').should('exist');
+  });
 
+  it('should visit to not found data', () => {
+    cy.visit('/items?search=lksndflkasjflkasjflsajflsajflksaf');
+    cy.url().should(
+      'include',
+      '/items?search=lksndflkasjflkasjflsajflsajflksaf'
+    );
+    cy.get('.not__content').should('exist');
+  });
 });

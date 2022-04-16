@@ -5,7 +5,7 @@
 >
   <li *ngFor="let category of categories; last as isLast">
     <a [routerLink]="['/items']" [queryParams]="{ search: category }">{{
-      category
+      category | titlecase
     }}</a>
     <div aria-hidden="true" class="divider" *ngIf="!isLast">></div>
   </li>

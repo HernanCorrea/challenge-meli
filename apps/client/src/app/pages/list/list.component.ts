@@ -12,14 +12,14 @@ import { AppState } from '../../core/store/app.state';
 import { getItemList } from '../../core/store/item/item.selectors';
 import { ItemI } from '../../core/interfaces';
 import { searchItems } from '../../core/store/item/item.actions';
-import { TriggerFlyInOut } from '../../shared/animations/stagger.animation';
+import { fadeInOut } from '../../shared/animations/enter-leave.animation';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [TriggerFlyInOut],
+  animations: [fadeInOut]
 })
 export class ListComponent implements OnInit, OnDestroy {
   constructor(

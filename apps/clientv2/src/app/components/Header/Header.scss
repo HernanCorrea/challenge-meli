@@ -1,8 +1,26 @@
-.logo{
-    img{
-        width: 3.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+@import '.../../../../../assets//styles/modules/header';
+header {
+  position: relative;
+  .container {
+    flex-basis: var(--container-width);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+    form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
     }
+  }
+}
+
+.logo {
+  img {
+    width: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

@@ -5,6 +5,8 @@ import {
 } from '@angular/common/http/testing';
 import { ItemService } from './item.service';
 import { environment } from '../../../environments/environment';
+import { TransferHttpService } from './transfer-http.service';
+import { TransferState } from '@angular/platform-browser';
 // import { HttpClientModule } from '@angular/common/http';
 // import { BehaviorSubject } from 'rxjs';
 // import { convertToParamMap } from '@angular/router';
@@ -14,7 +16,8 @@ describe('ItemService', () => {
   let httpTestingController: HttpTestingController;
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule],
+      providers: [TransferState]
     });
     service = TestBed.inject(ItemService);
     httpTestingController = TestBed.get(HttpTestingController);

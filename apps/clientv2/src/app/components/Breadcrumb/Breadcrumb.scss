@@ -7,6 +7,7 @@ ul {
     font-size: var(--small-font-size);
     font-weight: 100;
     align-items: center;
+    flex-wrap: wrap;
     li {
       display: flex;
       gap: 1rem;

@@ -5,6 +5,9 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { HeaderComponent } from './header.component';
 import { searchItems } from '../../../core/store/item/item.actions';
 import { initialStateItem } from '../../../core/store/item/item.state';
+import { RouterTestingModule } from '@angular/router/testing';
+import { routes } from '../../../app-routing.module';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -14,7 +17,11 @@ describe('HeaderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HeaderComponent],
-      imports: [SearchFieldModule],
+      imports: [
+        SearchFieldModule,
+        RouterTestingModule.withRoutes(routes),
+        NoopAnimationsModule,
+      ],
       providers: [
         provideMockStore({
           initialState: {

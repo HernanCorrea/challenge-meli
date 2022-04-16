@@ -1,4 +1,19 @@
 .container{
     width: var(--container-width);
     margin: auto;
+    .container__subheader{
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+.rolling__container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .rolling__img {
+        width: 40px;
+    }
 }

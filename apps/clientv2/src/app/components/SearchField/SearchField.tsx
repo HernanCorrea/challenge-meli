@@ -19,6 +19,7 @@ export default function SearchField() {
       className="search_navbar"
       onSubmit={handleSubmit}
       aria-label="Buscador de items de la tienda"
+      autoComplete={'off'}
     >
       <input
         className="search__input"
@@ -27,7 +28,6 @@ export default function SearchField() {
         aria-label="Escribe aquí el item que buscas"
         role="searchbox"
         placeholder="Nunca dejes de buscar"
-        required
       />
       <button
         type="submit"

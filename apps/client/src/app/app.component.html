@@ -1,5 +1,18 @@
 <app-header></app-header>
 <div class="container">
-  <app-breadcrumb [categories]="(categories$ | async) || []"></app-breadcrumb>
+  <div class="container__subheader">
+    <div
+      *ngIf="isLoading$ | async"
+      [@fadeSlideInOut]
+      class="rolling__container"
+    >
+      <img
+        class="rolling__img"
+        src="../../../../assets/images/meli-animation.gif"
+        alt=""
+      />
+    </div>
+    <app-breadcrumb [categories]="(categories$ | async) || []"></app-breadcrumb>
+  </div>
   <router-outlet></router-outlet>
 </div>
