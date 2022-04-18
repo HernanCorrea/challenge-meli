@@ -10,6 +10,7 @@
     "api:dev": "npx nx serve api",
     "api:test": "npx nx test api --silent",
     "api:build": "npx ng build api",
+    "api:serve": "node dist/apps/api/main.js",
     "api:test-watch": "npm run test:api -- --watch",
     "client:test-e2e": "npx nx e2e client-e2e --watch",
     "client:test": "npx nx run client:test --silent --codeCoverage=true",
@@ -21,7 +22,7 @@
     "clientv2:test-e2e": "npx nx e2e clientv2-e2e --watch",
     "clientv2:dev": "npx ng s clientv2",
     "clientv2:build": "npx ng build clientv2",
-    "serve:all": "npm run client:test && npm run client:build-ssr && npm run api:build && npm run clientv2:build",
+    "build:all": "npm run client:test && npm run client:build-ssr && npm run api:build && npm run clientv2:build",
     "serve:production": "npm run client:serve-ssr && node dist/apps/api/main.js",
     "ng:component": "npx nx generate @nrwl/angular:component login --project=client --skip-import"
   },

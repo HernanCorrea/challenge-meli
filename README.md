@@ -54,31 +54,12 @@ npm install
 ```
 
 ```javascript
-// DEV mode
-npm run prod:all
 // Prod mode
-npm run serve:all
-```
+npm run build:all // Test and build for production
+npm run api:serve // Express App
 
-```javascript
-// TODO: ALL COMMANDS
-api:dev
-api:test
-api:build
-api:test
-client:test
-client:test
-client:test
-client:dev
-client:build
-client:serve
-client:prerender
-clientv2:test
-clientv2:dev
-clientv2:build
-serve:all
-client:serve-ssr
-node dist/apps/api/main.js",
+npm run client:serve-ssr // Angular App
+npm run clientv2:dev // React App
 ```
 
 Si quieres contactarme puedes escribirme al correo hernancorrea104@gmail.com
