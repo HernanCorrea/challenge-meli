@@ -12,7 +12,7 @@ import { AppState } from '../../core/store/app.state';
 import { getItemList } from '../../core/store/item/item.selectors';
 import { ItemI } from '../../core/interfaces';
 import { searchItems } from '../../core/store/item/item.actions';
-import { fadeInOut } from '../../shared/animations/enter-leave.animation';
+import { fadeInOut } from '../../shared/animations/fade-slide.animation';
 
 @Component({
   selector: 'app-list',

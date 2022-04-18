@@ -1,65 +1,70 @@
-.item__card{
-    margin: 0px 16px;
-    padding: 16px;
+@import '../../../assets/styles/base/mixins.scss';
+
+.item__card {
+  margin: 0px 16px;
+  padding: 16px;
+  display: flex;
+  border-bottom: 1px solid #eeeeee;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.section__thumbnail {
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    width: 100px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center;
+    border-radius: var(--border-radius);
+    transition: all 300ms ease;
+
+    @include mobile-landscape-up {
+      width: 180px;
+    }
+  }
+}
+
+.section__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 2rem;
+  flex: 2;
+  .title__container {
+    align-items: center;
     display: flex;
-    border-bottom: 1px solid #EEEEEE;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.section__thumbnail{
-    margin-right: 16px;
-    width: 180px;
-    height: 180px;	
-    img{
-        object-fit: cover;
-        object-position: center;
-        width: 100%;
-        height: 100%;
-        border-radius: var(--border-radius);
-        transition: all 300ms ease;
+    gap: 5px;
+    .free__item {
+      border-radius: 50%;
+      // padding: 0.5rem;
     }
+  }
+  .location__item {
+    flex-basis: 30%;
+  }
 }
 
-.section__content{
-	display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-top: 2rem;
-    flex: 2;
-    .title__container{
-        align-items: center;
-        display: flex;
-        gap: 5px;
-        .free__item{
-            border-radius: 50%;
-            // padding: 0.5rem;
-        }
-    }
-    .location__item{
-        flex-basis: 30%;
-    }
+.card__hover {
+  animation: float 2s ease-in-out infinite;
 }
-
-.card__hover{
-    animation: float 2s ease-in-out infinite;
+.image__hover {
+  transform: scale(1.1);
 }
-.image__hover{
-    transform: scale(1.1);
-}
-
 
 @keyframes float {
-	0% {
-		transform: translatey(0px);
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-	}
-	50% {
-		transform: translatey(-3px);
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-	}
-	100% {
-		transform: translatey(0px);
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-	}
+  0% {
+    transform: translatey(0px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    transform: translatey(-3px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    transform: translatey(0px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
 }

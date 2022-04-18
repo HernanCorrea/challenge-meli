@@ -31,12 +31,6 @@ describe('SearchFieldComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('should disable button on field empty', () => {
-  //   expect(component.form.valid).toBeFalsy();
-  //   const isDisabled = Object.prototype.hasOwnProperty.call(searchButton.attributes, 'disabled');
-  //   expect(isDisabled).toBeTruthy();
-  // });
-  
   it('should enable button on set value to field ', () => {
     component.form.controls['search'].setValue('test');
     expect(component.form.valid).toBeTruthy();

@@ -21,4 +21,15 @@ describe('ImageMagnifierComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
+  it('should hide lens', () => {
+    component.showHideMagnifier(false);
+    fixture.detectChanges();
+    expect(component.showMagnifier).toBeFalsy();
+  });
+  it('should show lens', () => {
+    component.showHideMagnifier(true);
+    fixture.detectChanges();
+    expect(component.showMagnifier).toBeTruthy();
+  });
 });

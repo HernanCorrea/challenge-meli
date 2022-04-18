@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { fadeInOut } from '../../animations/enter-leave.animation';
+import { fadeInOut } from '../../animations/fade-slide.animation';
 import { FormSearchI } from './search-field.interface';
 
 @Component({

@@ -28,7 +28,7 @@
     --small-font-size: .813rem;
     --smaller-font-size: .75rem;
 
-    // Responsive typography
+    /*====== Responsive typography ====*/
     @include mobile-landscape-up {    
         --container-width: 75%;
         --biggest-font-size: 4rem;

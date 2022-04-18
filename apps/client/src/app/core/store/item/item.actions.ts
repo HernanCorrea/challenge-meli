@@ -1,6 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 import { CategoryI, ItemI, ItemListJSON } from '../../interfaces';
 
+export const URL_SEARCH_ITEMS = 'SEARCH_ITEMS';
+
 // TODO: SEARCH ITEMS
 export const SEARCH_ITEMS = '[ITEM] Search items';
 export const searchItems = createAction(

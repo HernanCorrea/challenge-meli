@@ -6,7 +6,7 @@ import { map, Observable } from 'rxjs';
 import { getCategories } from './core/store/item/item.selectors';
 import { CategoryI } from './core/interfaces';
 import { getLoad } from './core/store/load/load.selectors';
-import { fadeSlideInOut } from './shared/animations/enter-leave.animation';
+import { fadeSlideInOut } from './shared/animations/fade-slide.animation';
 
 @Component({
   selector: 'app-root',

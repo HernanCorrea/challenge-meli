@@ -59,6 +59,7 @@ export class ItemEffects {
           }),
           catchError((error) => {
             console.warn('error', error.message);
+            this.router.navigate(['/']);
             return of(error);
           })
         );
