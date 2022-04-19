@@ -71,12 +71,8 @@ describe('ItemComponent', () => {
     // test currency pipe
     const currencyPipe = new CurrencyPipe('en-US');
     expect(amountElement.nativeElement.textContent.trim()).toBe(
-      currencyPipe.transform(component.item.price.amount)
+      currencyPipe.transform(component.item.price.amount, undefined, 'symbol-narrow', '1.0-0')
     );
-    // const currencyPipe = new CurrencyPipe(component.item.price.currency, component.item.price.currency);
-    // const price = currencyPipe.transform(component.item.price.amount, component.item.price.currency);
-
-    // expect(amountElement.nativeElement.textContent).toEqual(price);
   });
 
   it('Validate condition', () => {
