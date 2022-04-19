@@ -61,5 +61,12 @@ npm run api:serve // Express App
 npm run client:serve-ssr // Angular App
 npm run clientv2:dev // React App
 ```
+```javascript
+// Local mode for development
+npm run api:dev // Express App
+
+npm run client:dev-ssr // Angular App
+npm run clientv2:dev // React App
+```
 
 Si quieres contactarme puedes escribirme al correo hernancorrea104@gmail.com
