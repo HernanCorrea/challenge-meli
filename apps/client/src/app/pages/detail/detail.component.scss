@@ -48,7 +48,7 @@
         overflow-wrap: normal;
         word-break: break-word;
         font-size: var(--smaller-font-size);
-        color: var(--text-color-light);
+        color: var(--text-color);
       }
     }
   }
@@ -75,5 +75,13 @@
         line-height: 1.8rem;
       }
     }
+  }
+}
+
+.price__item{
+  font-size: var(--h1-font-size);
+  font-weight: 400;
+  sup{
+    font-size: var(--h3-font-size);
   }
 }

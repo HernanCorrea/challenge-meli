@@ -8,6 +8,7 @@ import { ItemI } from '../../core/interfaces';
 import { SeoService } from '../../core/services/seo.service';
 import { AppState } from '../../core/store/app.state';
 import { getItemDetail } from '../../core/store/item/item.selectors';
+import {formatPrice, formatDecimal} from '../../core/utils/utils';
 import { MagnifierEventI } from '../../shared/components/image-magnifier/image-magnifier.interfaces';
 
 @Component({
@@ -18,6 +19,9 @@ import { MagnifierEventI } from '../../shared/components/image-magnifier/image-m
 })
 export class DetailComponent {
   constructor(private seoService: SeoService, private store: Store<AppState>) {}
+
+  formatPrice = formatPrice;
+  formatDecimal = formatDecimal;
 
   item$: Observable<ItemI | null> = this.store.select(getItemDetail).pipe(
     tap((item) => {

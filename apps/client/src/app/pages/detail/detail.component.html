@@ -11,7 +11,8 @@
         </div>
         <div class="price__content">
           <h1 class="price__item">
-            {{ item.price.amount | currency: '$' }}
+            {{ item.price.amount | currency: undefined:'symbol-narrow':'1.0-0'
+            }}<sup>{{ formatDecimal(item.price.amount) }}</sup>
           </h1>
         </div>
         <!-- tabindex="1" -->

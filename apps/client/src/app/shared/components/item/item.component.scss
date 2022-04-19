@@ -37,6 +37,9 @@
     align-items: center;
     display: flex;
     gap: 5px;
+    .price__item {
+      font-weight: var(--font-medium);
+    }
     .free__item {
       border-radius: 50%;
       // padding: 0.5rem;

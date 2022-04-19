@@ -6,7 +6,7 @@
     <div class="detail__item">
       <div class="title__container">
         <h2 class="price__item">
-          {{ item.price.amount | currency: '$' }}
+          {{item.price.amount | currency: undefined:'symbol-narrow':'1.0-0'}}
         </h2>
         <img
           *ngIf="item.free_shipping"

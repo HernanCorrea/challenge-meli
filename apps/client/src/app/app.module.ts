@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, NgModule } from '@angular/core';
 import {
   BrowserModule,
   BrowserTransferStateModule,
@@ -48,6 +48,7 @@ import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
       useClass: LoadingInterceptor,
       multi: true,
     },
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'ARS' },
   ],
   bootstrap: [AppComponent],
 })
